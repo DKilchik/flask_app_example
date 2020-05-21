@@ -1,0 +1,1 @@
+FLASK_APP=exam_service.py
