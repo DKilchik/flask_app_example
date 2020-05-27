@@ -7,7 +7,6 @@ from flask import render_template, redirect, url_for, flash, request
 from werkzeug.urls import url_parse
 
 
-
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:

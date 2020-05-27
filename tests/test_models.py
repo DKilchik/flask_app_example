@@ -3,9 +3,11 @@ from config import Config
 from app import create_app, db
 from app.models import Users
 
+
 class TestConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
+
 
 class UserModelCase(unittest.TestCase):
     def setUp(self):
