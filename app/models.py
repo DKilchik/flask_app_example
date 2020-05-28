@@ -27,6 +27,16 @@ def load_user(id):
 class Subjects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True, unique=True)
+    children = db.relationship("Tests")
 
     def __repr__(self):
         return '<Subject {}>'.format(self.name)
+
+
+class Tests(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True, unique=True)
+    subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'))
+
+    def __repr__(self):
+        return '<Test {}>'.format(self.name)

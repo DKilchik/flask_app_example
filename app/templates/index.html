@@ -4,6 +4,6 @@
 {% block content %}
     <h1>Hi, {{ current_user.username }}!</h1>
     {% for subject in subjects %}
-    <div><p> {{ subject.name }}</p></div>
+    <a class="nav-link" href="#">{{ subject.name }}</a>
     {% endfor %}
 {% endblock %}
