@@ -10,7 +10,7 @@ class Users(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<User ({},{})>'.format(self.id, self.username)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -30,7 +30,7 @@ class Subjects(db.Model):
     children = db.relationship("Tests")
 
     def __repr__(self):
-        return '<Subject {}>'.format(self.name)
+        return '<Subject ({},{})>'.format(self.id, self.name)
 
 
 class Tests(db.Model):
