@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, {{subject.name}}!</h1>
+    {% for test in tests %}
+    <a class="nav-link" href="#" > {{ test.name }}</a>
+    {% endfor %}
 {% endblock %}
