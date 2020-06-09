@@ -37,6 +37,19 @@ class Tests(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True, unique=True)
     subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'))
+    children = db.relationship("Questions")
 
     def __repr__(self):
         return '<Test {}>'.format(self.name)
+
+
+class Questions(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    test_id = db.Column(db.Integer, db.ForeignKey('tests.id'))
+    q_text = db.Column(db.String(256))
+    q_var1 = db.Column(db.String(256))
+    q_var2 = db.Column(db.String(256))
+    q_var3 = db.Column(db.String(256))
+    correct = db.Column(db.Integer)
+
+
