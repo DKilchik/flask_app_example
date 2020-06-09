@@ -40,16 +40,20 @@ class Tests(db.Model):
     children = db.relationship("Questions")
 
     def __repr__(self):
-        return '<Test {}>'.format(self.name)
+        return '<Test ({},{})>'.format(self.id, self.name)
 
 
 class Questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     test_id = db.Column(db.Integer, db.ForeignKey('tests.id'))
     q_text = db.Column(db.String(256))
-    q_var1 = db.Column(db.String(256))
-    q_var2 = db.Column(db.String(256))
-    q_var3 = db.Column(db.String(256))
-    correct = db.Column(db.Integer)
+    children = db.relationship("Answers")
+
+    def __repr__(self):
+        return '<Question {}'.format(self.q_text)
 
 
+class Answers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    question_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
+    ans_text = db.Column(db.String(256))
