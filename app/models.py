@@ -50,10 +50,13 @@ class Questions(db.Model):
     children = db.relationship("Answers")
 
     def __repr__(self):
-        return '<Question {}'.format(self.q_text)
+        return '<id {},Question {}'.format(self.id, self.q_text)
 
 
 class Answers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
     ans_text = db.Column(db.String(256))
+
+    def __repr__(self):
+        return '<Option {}'.format(self.ans_text)

@@ -1,8 +1,8 @@
 from app.main import bp
 from flask_login import login_required
 from flask import render_template
-from app.models import Subjects, Tests, Questions
-import random
+from app.models import Subjects, Tests, Questions, Answers
+
 
 @bp.route('/')
 @bp.route('/index')
@@ -22,4 +22,5 @@ def subject_tests(subject_id):
 @bp.route('/tests/<int:test_id>')
 def question(test_id):
     question = Questions.query.filter_by(test_id=test_id).first()
-    return render_template('question.html', question=question)
+    answer_options = Answers.query.filter_by(question_id=question.id).all()
+    return render_template('question.html', question=question, options=answer_options)
