@@ -1,4 +1,5 @@
 from app.main import bp
+from app.main.forms import QsForm
 from flask_login import login_required
 from flask import render_template
 from app.models import Subjects, Tests, Questions, Answers
@@ -23,4 +24,6 @@ def subject_tests(subject_id):
 def question(test_id):
     question = Questions.query.filter_by(test_id=test_id).first()
     answer_options = Answers.query.filter_by(question_id=question.id).all()
-    return render_template('question.html', question=question, options=answer_options)
+    form = QsForm()
+    form.example.choices = [option.ans_text for option in answer_options]
+    return render_template('question.html', question=question, form=form)
