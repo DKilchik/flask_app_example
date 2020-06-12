@@ -47,6 +47,7 @@ class Questions(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     test_id = db.Column(db.Integer, db.ForeignKey('tests.id'))
     q_text = db.Column(db.String(256))
+    correct_ans = db.Column(db.Integer)
     children = db.relationship("Answers")
 
     def __repr__(self):
@@ -55,6 +56,7 @@ class Questions(db.Model):
 
 class Answers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    opt_id = db.Column(db.Integer)
     question_id = db.Column(db.Integer, db.ForeignKey('questions.id'))
     ans_text = db.Column(db.String(256))
 

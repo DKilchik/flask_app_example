@@ -2,10 +2,12 @@
 
 {% block content %}
   <legend>{{question.q_text}}</legend>
+<form action="" method="post">
       <div>
-      {{ form.example()}}
+      {{ form.option()}}
 </div>
       <div>
       {{ form.submit()}}
 </div>
+     </form>
 {% endblock %}
