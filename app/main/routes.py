@@ -4,13 +4,19 @@ from flask_login import login_required
 from flask import render_template, request, redirect, url_for
 from app.models import Subjects, Tests, Questions, Answers
 
-
+"""
 @bp.route('/')
 @bp.route('/index')
 @login_required
 def index():
     subjects = Subjects.query.all()
     return render_template('index.html', subjects=subjects)
+"""
+
+
+@bp.route('/')
+def mock():
+    return render_template('mock.html')
 
 
 @bp.route('/subjects/<int:subject_id>')
@@ -21,12 +27,14 @@ def subject(subject_id):
 
 
 @bp.route('/test/<int:test_id>')
+@login_required
 def test(test_id):
     first_question = Questions.query.filter_by(test_id=test_id).first_or_404()
     return redirect(url_for('main.question', question_id=first_question.id))
 
 
 @bp.route('/question/<int:question_id>', methods=['GET', 'POST'])
+@login_required
 def question(question_id):
     form = QsForm()
     question = Questions.query.filter_by(id=question_id).first()
