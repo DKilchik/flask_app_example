@@ -1,37 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    {% block head %}
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/lumen/bootstrap.min.css" rel="stylesheet" integrity="sha384-VMuWne6iwiifi8iEWNZMw8sDatgb6ntBpBIr67q0rZAyOQwfu/VKpnFntQrjxB5W" crossorigin="anonymous">
-    <title>{% block title %}{% endblock %} - My Webpage</title>
-    {% endblock %}
+     {% block head %}
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/background.css">
+   {% block imports %}
+   {% endblock %}
+     {% endblock %}
 </head>
 <body>
-    <div id="navbar">{% block navbar %}
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">ЙYХ</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+    {% block navbar %}
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('auth.login') }}">Let's think!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav">
-        <a class="nav-link" href="http://127.0.0.1:5000/auth/login">Login </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="http://127.0.0.1:5000/auth/register">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="http://127.0.0.1:5000/auth/logout">Logout</a>
-      </li>
-    </ul>
   </div>
+    {% endblock %}
 </nav>
-      {% endblock %}</div>
-    <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer">
-        {% block footer %}
-        {% endblock %}
-    </div>
+
+<!-- Full Page Image Background with Vertically Centered Content -->
+<div class="masthead">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
 </body>
 </html>
