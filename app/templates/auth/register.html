@@ -1,52 +1,55 @@
 {% extends "base.html" %}
 
-
+   {% block imports %}
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
+   {% endblock %}
 
 {% block content %}
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Sign Up</h5>
+            <form class="form-signin" action="" method="post">
+                                     {{ form.hidden_tag() }}
+                <div class="form-label-group">
+                {{form.username(class="form-control", placeholder="Username",id="Username")}}
+                    {{ form.username.label(for="Username") }}
+                </div>
+                <div class="form-label-group">
+                {{form.email(type="email",class="form-control", placeholder="Email address",id="Email")}}
+                    {{ form.email.label(for="Email") }}
+                </div>
+                <div class="form-label-group">
+                 {{ form.password(type="password",class="form-control", placeholder="Password",id="Password") }}
+                 {{ form.password.label(for="Password") }}
+                    </div>
+                <div class="form-label-group">
+                 {{ form.password2(type="password",class="form-control", placeholder="Password",id="Password2") }}
+                 {{ form.password2.label(for="Password2") }}
+                    </div>
+                <div >
+                {{ form.submit(class="btn btn-lg btn-primary btn-block text-uppercase",type="submit") }}
+                 </div>
 
-<div class="card bg-light">
-<article class="card-body mx-auto" style="max-width: 400px;">
-	<h4 class="card-title mt-3 text-center">Create Account</h4>
+                {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                {% if errors %}
+                 {% for  message in errors %}
+                 <div class="text-danger text-center">
+                  <a class="small " >{{ message }}</a></div>
+                 {% endfor %}
+                  {% endif %}
+                {% endwith %}
 
-	<form action="" method="post">
-                {{ form.hidden_tag() }}
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
-        {{ form.username(class="form-control", placeholder="Username") }}
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		 </div>
- <!--       <input name="" class="form-control" placeholder="Email address" type="email"> -->
-        {{ form.email(class="form-control", placeholder="Email address") }}
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
- <!--       <input class="form-control" placeholder="Create password" type="password"> -->
-        {{ form.password(class="form-control", placeholder="Create password") }}
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-  <!--      <input class="form-control" placeholder="Repeat password" type="password"> -->
-        {{ form.password2(class="form-control", placeholder="Repeat password") }}
-    </div> <!-- form-group// -->
-    <div class="form-group">
-    <!--    <button type="submit" class="btn btn-primary btn-block"> Create Account  </button> -->
-        {{ form.submit(class="btn btn-primary btn-block") }}
-    </div> <!-- form-group// -->
-    <p class="text-center">Have an account? <a href="http://127.0.0.1:5000/auth/login">Log In</a> </p>
-</form>
-</article>
-</div> <!-- card.// -->
 
-</div>
-<!--container end.//-->
-
+              <hr class="my-4">
+                <div class="text-center">
+                  <a class="small" href="{{ url_for('auth.login') }}">Already has an account?</a></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

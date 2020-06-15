@@ -9,7 +9,8 @@ db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
 login.login_view = 'auth.login'
-login.login_message_category = "info"
+login.login_message = None
+
 
 
 def create_app(config_class=Config):
