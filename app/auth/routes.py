@@ -43,4 +43,4 @@ def register():
         db.session.commit()
         flash(u'Congratulations, you are now a registered user!', 'info')
         return redirect(url_for('auth.login'))
-    return render_template('auth/register.html', title='Register', form=form)
+    return render_template('auth/register.html', title='Register', form=form) # Error messages are absent

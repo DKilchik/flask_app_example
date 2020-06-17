@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     {% block head %}
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/background.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+   {% block imports %}
+   {% endblock %}
+    <style>
+
+h1
+{
+	color:#fff;
+	margin: 0px 0 60px 0;
+	font-weight:300;
+}
+
+.our-team-main
+{
+	width:150px;
+	height:200px;
+	background:#DFE0D8;
+	text-align:center;
+	border-radius:10px;
+	overflow:hidden;
+	position:relative;
+	transition:0.5s;
+	margin:15px 0px 15px 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+}
+
+.our-team-main:hover {
+	width:150px;
+	height:200px;
+	background: #DFE0D8;
+	text-align:center;
+	border-radius:10px;
+	overflow:hidden;
+	position:relative;
+	transition:0.5s;
+	margin:15px 0px 15px 5px;
+	box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.our-team-main img
+{
+	border-radius:50%;
+	margin-bottom:20px;
+	width: 90px;
+}
+
+
+.team-front
+{
+	width:100%;
+	height:auto;
+	position:relative;
+	z-index:5;
+	background:#eaece7;
+	padding:15px;
+	bottom: 0px;
+	transition: all 0.5s ease;
+}
+
+.our-team-main h3
+{
+	font-size:20px;
+	font-weight:700;
+}
+
+.our-team-main p
+{
+	margin-bottom:0;
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+    content: "";
+    background-color: rgba(0,0,0,0);
+}
+
+
+<!--                               test                                                                       -->
+
+
+
+    </style>
+     {% endblock %}
+
+
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+    {% block navbar %}
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('auth.login') }}">Let's think!</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+  </div>
+    {% endblock %}
+</nav>
+
+<!-- Full Page Image Background with Vertically Centered Content -->
+<div class="masthead">
+
+
+        <h1 class="text-center">some text</h1>
+
+<div class="container-fluid" >
+  <div class="row">
+
+	<div class="container position-fixed" style=" background:#F8F9FA ; border-radius:5px; box-shadow: 0 0 5px rgba(0,0,0,0.5);
+								margin-left: 7%; max-width: 1100px ; min-width: 1100px; min-height: 750px; max-height: 750px;
+								 overflow-y: auto;
+									">
+
+	<div class="row">
+
+
+	<!--team-2-->
+	<div class="col-sm-2">
+	<div class="our-team-main "  >
+
+
+	<div class="team-front"  >
+	<img src="https://i.ibb.co/w7JMfFv/pngwing-com.png" class="img-fluid" />
+	<h3>Computer Science</h3>
+        <a href="https://cs11.pikabu.ru/post_img/2018/05/25/10/1527265888178950279.jpg" class="stretched-link"></a>
+	</div>
+
+
+
+	</div>
+	</div>
+	<!--team-2-->
+
+	<!--team-3-->
+	<div class="col-sm-2">
+	<div class="our-team-main">
+
+	<div class="team-front">
+	<img src="http://placehold.it/110x110/607d8b/fff?text=Dilip" class="img-fluid" />
+	<h3>Economic</h3>
+	<p>Web Designer</p>
+	</div>
+
+
+
+	</div>
+	</div>
+	<!--team-3-->
+
+	<!--team-4-->
+	<div class="col-sm-2">
+	<div class="our-team-main">
+
+	<div class="team-front">
+	<img src="http://placehold.it/110x110/4caf50/fff?text=Dilip" class="img-fluid" />
+	<h3>Dilip Kevat</h3>
+	<p>Web Designer</p>
+	</div>
+
+
+	</div>
+	</div>
+	<!--team-4-->
+
+
+
+	</div>
+	</div>
+
+
+
+	<div class="container position-relative" style="background:#F8F9FA ; width: 400px; overflow-y: auto;
+													border-radius:5px; box-shadow: 0 0 5px rgba(0,0,0,0.5);margin-left: 70%;
+													min-height: 325px; max-height: 325px;" >
+
+	</div>
+	</div>
+	</div>
+</div>
+
+</body>
+</html>
