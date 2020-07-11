@@ -24,9 +24,21 @@ def load_user(id):
     return Users.query.get(int(id))
 
 
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True, unique=True)
+    children = db.relationship("Subjects")
+
+    def __repr__(self):
+        return '<Category {}>'.format(self.name)
+
+
+
 class Subjects(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True, unique=True)
+    category = db.Column(db.Integer, db.ForeignKey('category.id'))
+    image = db.Column(db.Text, default='https://i.ibb.co/N6S5H2y/shutterstock-650.jpg')
     children = db.relationship("Tests")
 
     def __repr__(self):
